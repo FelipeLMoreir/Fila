@@ -8,7 +8,7 @@ do
 {
 
     Console.WriteLine("Escolha uma opção:\n1 - Inserir Pessoa\n2 - Remover Pessoa" +
-        "\n3 - Tamanho da Fila\n4 - Exibir a Fila");
+        "\n3 - Tamanho da Fila\n4 - Exibir a Fila\n0 - Sair");
     opcao = int.Parse(Console.ReadLine()!);
 
     switch (opcao)
