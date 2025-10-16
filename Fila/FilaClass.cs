@@ -8,13 +8,16 @@ namespace Fila
 {
     public class FilaClass 
     {
+        private Pessoa head;
+        private Pessoa tail;
+
         public FilaClass()
         {
-            Pessoa head = null;
-            Pessoa tail = head;
+            head = null;
+            tail = head;
         }
 
-        public bool FilaVazia(Pessoa head)
+        public bool FilaVazia()
         {
             if (head == null)
             {
@@ -26,46 +29,50 @@ namespace Fila
             }
         }
 
-        public void InserirPessoa(Pessoa elemento, Pessoa h, Pessoa t)
+        public void InserirPessoa(Pessoa elemento)
         {
-            if (FilaVazia(h))
+            if (FilaVazia())
             {                
-                h = elemento;
-                t = elemento;
+                head = elemento;
+                tail = elemento;
             }
             else
             {
-                t.Proximo = elemento;
-                t = elemento;
+                tail.Proximo = elemento;
+                tail = elemento;
             }
+            Console.WriteLine($"Pessoa {elemento.Nome} adicionado!");
         }
 
-        public void RemoverPessoa(Pessoa h, Pessoa t)
+        public void RemoverPessoa()
         {
-            if (FilaVazia(h))
+            if (FilaVazia())
             {
                 Console.WriteLine("Fila Vazia");
             }
             else
             {
-                h = h.Proximo;
-                if (h == null)
+                Console.WriteLine($"Removendo {head.Nome} da fila");
+                head = head.Proximo;
+                if (head == null)
                 {
-                    t = null;
+                    tail = null;
                 }
             }
         }
 
-        public int TamanhoFila(Pessoa h)
+        public int TamanhoFila()
         {
             int contador = 0;
-            if (FilaVazia(h))
+            Pessoa aux = head;
+
+            if (FilaVazia())
             {
                 return contador;
             }
             else
             {
-                Pessoa aux = h;
+                aux = head;
                 do
                 {
                     contador++;
@@ -76,15 +83,16 @@ namespace Fila
             return contador;
         }
 
-        public void ImprimirFila(Pessoa h)
+        public void ImprimirFila()
         {
-            if (FilaVazia(h))
+            if (FilaVazia())
             {
                 Console.WriteLine("Fila Vazia");
             }
             else
             {
-                Pessoa aux = h;
+                Console.WriteLine("Pessoas na fila: ");
+                Pessoa aux = head;
                 while (aux != null)
                 {
                     Console.WriteLine(aux.Nome);

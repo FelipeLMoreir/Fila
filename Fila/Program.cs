@@ -7,27 +7,22 @@ Console.WriteLine("Escolha uma opção:\n1 - Inserir Pessoa\n2 - Remover Pessoa"
 int opcao = int.Parse(Console.ReadLine()!);
 
 FilaClass f = new FilaClass();
-Pessoa head = new Pessoa();
-Pessoa tail = new Pessoa();
-Pessoa pessoa = new Pessoa();
 
 switch (opcao)
 {
     case 1:
         Console.WriteLine("Digite o nome da pessoa que deseja adicionar:");
-        pessoa.Nome = Console.ReadLine()!;
-        f.InserirPessoa(pessoa, head, tail);
+        string nome = Console.ReadLine()!;
+        f.InserirPessoa(new Pessoa { Nome = nome });
         break;
     case 2:
-        Console.WriteLine("Digite o nome da pessoa que deseja remover");
-        pessoa.Nome = Console.ReadLine()!;
-        f.RemoverPessoa(head, tail);
+        f.RemoverPessoa();
         break;
     case 3:
-        f.TamanhoFila(head);
+        f.TamanhoFila();
         break;
     case 4:
-        f.ImprimirFila(head);
+        f.ImprimirFila();
         break;
     default:
         break;
